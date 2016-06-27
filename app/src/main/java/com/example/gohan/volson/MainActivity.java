@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -48,10 +49,12 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(MainActivity.this,"Error...",Toast.LENGTH_SHORT).show();
+                        error.printStackTrace();
 
                     }
                 });
-
+                    Singleton.getInstance(MainActivity.this).addToRequestQ(jsonObjectRequest);
             }
         });
     }
