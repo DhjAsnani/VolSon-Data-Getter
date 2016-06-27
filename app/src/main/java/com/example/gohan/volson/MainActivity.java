@@ -1,5 +1,6 @@
 package com.example.gohan.volson;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try {
+                            button.setBackgroundColor(Color.BLUE);
                             name.setText(response.getString("Name"));
                             email.setText(response.getString("Email"));
                             mob.setText(response.getString("Mobile"));
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this,"Error...",Toast.LENGTH_SHORT).show();
+                        button.setBackgroundColor(Color.RED);
                         error.printStackTrace();
 
                     }
